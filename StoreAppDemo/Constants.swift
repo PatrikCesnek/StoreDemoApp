@@ -16,4 +16,8 @@ struct Constants {
     let rating = String(localized: "Rating")
     let stock = String(localized: "Stock")
     let of = String(localized: "Of")
+    let price = String(localized: "Price")
+    let productID = String(localized: "Product ID")
+    let dismissFilter = String(localized: "Dismiss filter")
+    let close = String(localized: "Close")
 }

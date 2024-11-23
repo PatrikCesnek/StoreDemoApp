@@ -31,14 +31,14 @@ class ProductListViewModel: ObservableObject {
         let url = "https://fakestoreapi.com/products/categories"
         do {
             let response = try await AF.request(url).serializingDecodable([String].self).value
-            self.categories = ["Zrušiť filter"] + response
+            self.categories = [Constants().dismissFilter] + response
         } catch {
             print("Error fetching categories: \(error)")
         }
     }
 
     func filterByCategory(_ category: String?) async {
-        guard let category = category, category != "Zrušiť filter" else {
+        guard let category = category, category != Constants().dismissFilter else {
             selectedCategory = nil
             await fetchProducts()
             return

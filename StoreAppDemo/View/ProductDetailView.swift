@@ -15,25 +15,44 @@ struct ProductDetailView: View {
         VStack {
             if let product = viewModel.product {
                 ScrollView {
-                    AsyncImage(url: URL(string: product.image))
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                        .padding()
+                    AsyncImage(url: URL(string: product.image)){ result in
+                        result.image?
+                            .resizable()
+                            .scaledToFill()
+                    }
+                    .frame(width: 150, height: 200)
+                    .padding(30)
+                    
                     Text(product.title)
-                        .font(.largeTitle)
+                        .font(.title)
+                        .bold()
                         .padding()
-                    Text("\(product.price, specifier: "%.2f") €")
-                        .font(.title2)
-                        .padding(.bottom)
-                    Text("\(Constants().rating) \(product.rating.rate, specifier: "%.1f") \(Constants().of) 5")
-                        .font(.subheadline)
-                        .padding(.bottom, 2)
-                    Text("\(Constants().numberOfReviews) \(product.rating.count)")
-                        .font(.subheadline)
-                        .padding(.bottom, 10)
+                        .foregroundStyle(Color.blue)
+                    
                     Text(product.description)
-                        .font(.body)
                         .padding()
+                        .foregroundStyle(Color.secondary)
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(Constants().productID)
+                                .foregroundStyle(Color.secondary)
+
+                            Text("\(product.id)")
+                                .font(.title)
+                        }
+                        
+                        Spacer()
+                        
+                        VStack(alignment: .trailing){
+                            Text(Constants().price)
+                                .foregroundStyle(Color.secondary)
+
+                            Text("\(product.price, specifier: "%.2f") €")
+                                .font(.title)
+                        }
+                    }
+                    .padding()
                 }
             } else {
                 ProgressView(Constants().loading)
@@ -44,7 +63,7 @@ struct ProductDetailView: View {
                 await viewModel.fetchProductDetail(productId: productId)
             }
         }
-        .navigationTitle(Constants().productDetail)
+        .navigationTitle(viewModel.product?.category ?? Constants().productDetail)
     }
 }
 

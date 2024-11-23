@@ -1,6 +1,34 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%.2f €" : {
+
+    },
+    "%lld" : {
+
+    },
+    "Close" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zatvoriť"
+          }
+        }
+      }
+    },
+    "Dismiss filter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zrušiť filter"
+          }
+        }
+      }
+    },
     "Filter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -86,6 +114,17 @@
         }
       }
     },
+    "Price" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cena"
+          }
+        }
+      }
+    },
     "Product detail" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -99,6 +138,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detail produktu"
+          }
+        }
+      }
+    },
+    "Product ID" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID Produktu"
           }
         }
       }
