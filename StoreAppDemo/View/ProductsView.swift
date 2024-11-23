@@ -14,7 +14,7 @@ struct ProductsView: View {
         NavigationStack {
             VStack {
                 if viewModel.isLoading {
-                    ProgressView("Načítavam...")
+                    ProgressView(Constants().loading)
                 } else {
                     List(viewModel.products) { product in
                         NavigationLink(destination: ProductDetailView(productId: product.id)) {
@@ -28,9 +28,9 @@ struct ProductsView: View {
                                     Text("\(product.price, specifier: "%.2f") €")
                                         .font(.subheadline)
                                     HStack {
-                                        Text("Hodnotenie: \(product.rating.rate, specifier: "%.1f")")
+                                        Text("\(Constants().rating) \(product.rating.rate, specifier: "%.1f")")
                                         Spacer()
-                                        Text("Počet: \(product.rating.count)")
+                                        Text("\(Constants().stock) \(product.rating.count)")
                                     }
                                     .font(.footnote)
                                     .foregroundColor(.gray)
@@ -40,10 +40,10 @@ struct ProductsView: View {
                     }
                 }
             }
-            .navigationTitle(viewModel.selectedCategory ?? "Produkty")
+            .navigationTitle(viewModel.selectedCategory ?? Constants().products)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Menu("Filter") {
+                Menu(Constants().filter) {
                     ForEach(viewModel.categories, id: \.self) { category in
                         Button(category) {
                             Task {

@@ -1,12 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%.2f €" : {
-
-    },
-    "Detail produktu" : {
-
-    },
     "Filter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -23,15 +17,6 @@
           }
         }
       }
-    },
-    "Hello, world!" : {
-
-    },
-    "Hodnotenie: %.1f" : {
-
-    },
-    "Hodnotenie: %.1f z 5" : {
-
     },
     "Loading" : {
       "extractionState" : "manual",
@@ -50,11 +35,22 @@
         }
       }
     },
-    "Načítavam detail..." : {
-
-    },
-    "Načítavam..." : {
-
+    "Loading..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading..."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Načítavam..."
+          }
+        }
+      }
     },
     "Number of reviews" : {
       "extractionState" : "manual",
@@ -73,11 +69,39 @@
         }
       }
     },
-    "Počet recenzií: %lld" : {
-
+    "Of" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "of"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z"
+          }
+        }
+      }
     },
-    "Počet: %lld" : {
-
+    "Product detail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product detail"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detail produktu"
+          }
+        }
+      }
     },
     "Products" : {
       "extractionState" : "manual",

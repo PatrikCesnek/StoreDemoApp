@@ -25,10 +25,10 @@ struct ProductDetailView: View {
                     Text("\(product.price, specifier: "%.2f") €")
                         .font(.title2)
                         .padding(.bottom)
-                    Text("Hodnotenie: \(product.rating.rate, specifier: "%.1f") z 5")
+                    Text("\(Constants().rating) \(product.rating.rate, specifier: "%.1f") \(Constants().of) 5")
                         .font(.subheadline)
                         .padding(.bottom, 2)
-                    Text("Počet recenzií: \(product.rating.count)")
+                    Text("\(Constants().numberOfReviews) \(product.rating.count)")
                         .font(.subheadline)
                         .padding(.bottom, 10)
                     Text(product.description)
@@ -36,7 +36,7 @@ struct ProductDetailView: View {
                         .padding()
                 }
             } else {
-                ProgressView("Načítavam detail...")
+                ProgressView(Constants().loading)
             }
         }
         .onAppear {
@@ -44,7 +44,7 @@ struct ProductDetailView: View {
                 await viewModel.fetchProductDetail(productId: productId)
             }
         }
-        .navigationTitle("Detail produktu")
+        .navigationTitle(Constants().productDetail)
     }
 }
 
