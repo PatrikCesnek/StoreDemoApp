@@ -1,12 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%.2f €" : {
-
-    },
-    "%lld" : {
-
-    },
     "Close" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -14,12 +14,13 @@ class ProductListViewModel: ObservableObject {
     @Published var categories: [String] = []
     @Published var selectedCategory: String? = nil
     @Published var isLoading = false
+    
+    private let baseUrl = "https://fakestoreapi.com/products"
 
     func fetchProducts() async {
         isLoading = true
-        let url = "https://fakestoreapi.com/products"
         do {
-            let response = try await AF.request(url).serializingDecodable([Product].self).value
+            let response = try await AF.request(baseUrl).serializingDecodable([Product].self).value
             self.products = response
         } catch {
             print("Error fetching products: \(error)")
@@ -28,10 +29,15 @@ class ProductListViewModel: ObservableObject {
     }
 
     func fetchCategories() async {
-        let url = "https://fakestoreapi.com/products/categories"
+        let url = baseUrl + "/categories"
         do {
             let response = try await AF.request(url).serializingDecodable([String].self).value
-            self.categories = [Constants().dismissFilter] + response
+            
+            if selectedCategory != nil {
+                self.categories = [Constants().dismissFilter] + response
+            } else {
+                self.categories = response
+            }
         } catch {
             print("Error fetching categories: \(error)")
         }
@@ -41,10 +47,14 @@ class ProductListViewModel: ObservableObject {
         guard let category = category, category != Constants().dismissFilter else {
             selectedCategory = nil
             await fetchProducts()
+            await fetchCategories()
             return
         }
+        
         isLoading = true
-        let url = "https://fakestoreapi.com/products/category/\(category)"
+        
+        let url = baseUrl + "/category/\(category)"
+        
         do {
             let response = try await AF.request(url).serializingDecodable([Product].self).value
             self.products = response
@@ -52,6 +62,8 @@ class ProductListViewModel: ObservableObject {
         } catch {
             print("Error filtering products: \(error)")
         }
+        
         isLoading = false
+        await fetchCategories()
     }
 }

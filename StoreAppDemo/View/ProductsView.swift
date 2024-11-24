@@ -18,7 +18,9 @@ struct ProductsView: View {
                     ProgressView(Constants().loading)
                 } else {
                     List(viewModel.products) { product in
-                        NavigationLink(destination: ProductDetailView(productId: product.id)) {
+                        NavigationLink(
+                            destination: ProductDetailView(productId: product.id)
+                        ) {
                             HStack {
                                 AsyncImage(url: URL(string: product.image)){ result in
                                     result.image?
@@ -46,13 +48,19 @@ struct ProductsView: View {
             .navigationTitle(viewModel.selectedCategory ?? Constants().products)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button(action: {
-                    showFilterDialog = true
-                }) {
+                Button(
+                    action: {
+                        showFilterDialog = true
+                    }
+                ) {
                     Text(Constants().filter)
                 }
             }
-            .confirmationDialog(Constants().filter, isPresented: $showFilterDialog, titleVisibility: .hidden) {
+            .confirmationDialog(
+                Constants().filter,
+                isPresented: $showFilterDialog,
+                titleVisibility: .hidden
+            ) {
                 ForEach(viewModel.categories, id: \.self) { category in
                     Button(category) {
                         Task {
